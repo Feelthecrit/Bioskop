@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Rezervacija Karata</title>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/seatchart@0.1.0/dist/seatchart.css" />
+
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        background-color: #ffffff;
+      }
+
+      .economy {
+        color: white;
+        background-color: #43aa8b;
+      }
+
+      .first-class {
+        color: white;
+        background-color: #277da1;
+      }
+
+      .reduced {
+        color: white;
+        background-color: #f8961e;
+      }
+
+      .btn {
+        position: absolute;
+        width: 100px;
+        height: 40px;
+        top: 10px;
+        left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+    <div class="btn">
+      <button onclick="goBack()" class="btn btn-danger sign-out-btn">Nazad</button>
+    </div>
+
+    <script type="text/javascript" src="seatChart.js"></script>
+    <script>
+      var options = {
+        map: {
+          rows: 10,
+          columns: 10,
+          seatTypes: {
+            default: {
+              label: 'Ekonomija',
+              cssClass: 'economy',
+              price: 15,
+            },
+            first: {
+              label: 'Prva Klasa',
+              cssClass: 'first-class',
+              price: 25,
+              seatRows: [0, 1, 2],
+            },
+            reduced: {
+              label: 'Zadnja sedista',
+              cssClass: 'reduced',
+              price: 10,
+              seatRows: [7, 8, 9],
+            },
+          },
+          disabledSeats: [
+            { row: 0, col: 0 },
+            { row: 0, col: 9 },
+          ],
+          reservedSeats: [
+            { row: 0, col: 3 },
+            { row: 0, col: 4 },
+          ],
+          selectedSeats: [{ row: 0, col: 5 }, { row: 0, col: 6 }],
+          rowSpacers: [3, 7],
+          columnSpacers: [5],
+        },
+      };
+
+      var element = document.getElementById('container');
+      var sc = new Seatchart(element, options);
+      sc.addEventListener('submit', function handleSubmit(e) {
+        alert('Ukupno: ' + e.total + '€');
+      });
+
+  
+      history.replaceState(null, null, location.href);
+
+     
+      window.onbeforeunload = function () {
+        history.replaceState(null, null, location.href);
+      };
+
+      function goBack() {
+        
+        window.location.href = 'spisak.html';
+      }
+    </script>
+  </body>
+</html>

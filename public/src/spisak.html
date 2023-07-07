@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movie List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<style>
+    .img {
+        width: 350px;
+        height: 350px;
+    }
+
+    h5 {
+        color: rgba(53, 53, 52, 0.641);
+        font-size: 15px;
+    }
+
+    .custom-button {
+        padding-bottom: 10px;
+    }
+
+    .movie {
+        padding-bottom: 20px;
+        padding-top: 20px;
+    }
+
+    div h1 {
+        padding-top: 20px;
+        padding-bottom: 50px;
+        text-decoration: underline;
+       
+    }
+
+    .sign-out-btn {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+</style>
+<body>
+  <div class="container">
+    <button onclick="logout()" class="btn btn-danger sign-out-btn">Sign Out</button>
+    <h1 class="text-center">Filmovi</h1>
+    <div class="row text-center">
+      <div class="col-md-6">
+
+        <div class="movie">
+          <img src="assets/thor.jpg" alt="Movie Poster" class="img-thumbnail img img-fluid">
+          <div class="movie-details">
+            <h2>Thor: Love and Thunder</h2>
+            <h5>2022 ‧ Action/Adventure ‧ 1h 59m</h5>
+            <p>Vreme: 10:00 AM</p>
+            <button onclick="reserveMovie()" class="btn btn-primary custom-button">Rezervisi</button>
+          </div>
+        </div>
+        <div class="movie">
+          <img src="assets/spajdermen.jpg" alt="Movie Poster" class="img-thumbnail img img-fluid">
+          <div class="movie-details">
+            <h2>Spider-Man: No Way Home</h2>
+            <h5>2021 ‧ Action/Adventure ‧ 2h 28m</h5>
+            <p>Vreme: 13:30 PM</p>
+            <button onclick="reserveMovie()" class="btn btn-primary custom-button">Rezervisi</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="movie">
+          <img src="assets/crnipanter.jpg" alt="Movie Poster" class="img-thumbnail img img-fluid">
+          <div class="movie-details">
+            <h2>Black Panther</h2>
+            <h5>2018 ‧ Action/Adventure ‧ 2h 15m</h5>
+            <p>Vreme: 16:15 PM</p>
+            <button onclick="reserveMovie()" class="btn btn-primary custom-button">Rezervisi</button>
+          </div>
+        </div>
+        <div class="movie">
+          <img src="assets/avatar.jpg" alt="Movie Poster" class="img-thumbnail img img-fluid">
+          <div class="movie-details">
+            <h2>Avatar: The Way of Water</h2>
+            <h5>2022 ‧ Sci-fi/Action ‧ 3h 12m</h5>
+            <p>Vreme: 19:00 PM</p>
+            <button onclick="reserveMovie()" class="btn btn-primary custom-button">Rezervisi</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    function logout() {
+      window.location.href = "../login.html";
+    }
+
+    
+
+    function reserveMovie() {
+      window.location.href = "index.html";
+    }
+
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+      history.go(1);
+    };
+
+
+  </script>
+</body>
+</html>
